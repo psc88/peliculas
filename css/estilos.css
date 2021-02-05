@@ -1,0 +1,267 @@
+:root {
+    --rojo: #E50914;
+    --fondo: #141414;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--fondo);
+    font-family: 'Open Sans', sans-serif;
+}
+
+.contenedor {
+    width: 90%;
+    margin: auto;
+}
+
+header {
+    padding: 30px 0;
+}
+
+header .contenedor {
+    display: flex;
+    /*logotipo a la izquierda y menu a la derecha*/
+    justify-content: space-between;
+    /*logo queda a la izquierda y menu a la derecha*/
+    align-items: center;
+    /*centra de manera vertical*/
+}
+
+header .logotipo {
+    font-family: 'Bebas neue', cursive;
+    font-weight: normal;
+    /*quita el negrita*/
+    color: var(--rojo);
+    font-size: 40px;
+}
+
+header nav a {
+    color: #AAA;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+header nav a:hover,
+header nav a.activo {
+    color: #FFF;
+}
+
+
+/*---- ------ ------ Pelicula Principal ------ ------ ----*/
+
+.pelicula-principal {
+    font-size: 16px;
+    min-height: 40.62em;
+    color: white;
+    /*acá agrego 2 fondos uno con linear que tiene 2 colores y otro con url*/
+    background: linear-gradient(rgba(0, 0, 0, .50) 0%, rgba(0, 0, 0, .50) 100%), url(../img/backdrop.jpg);
+    background-position: center center;
+    /*para que la imagen abarque 100% disponible*/
+    background-size: cover;
+    /*se da un margen abajo de la imagen*/
+    margin-bottom: 3.12em;
+    display: flex;
+    /*para posicionar abajo con flex y flex-end*/
+    align-items: flex-end;
+}
+
+.pelicula-principal .contenedor {
+    margin: 0 auto;
+    margin-bottom: 6.25em;
+}
+
+.pelicula-principal .titulo {
+    font-weight: 600;
+    font-size: 3.12em;
+    margin-bottom: 0.4em;
+}
+
+.pelicula-principal .descripcion {
+    font-weight: normal;
+    font-size: 1em;
+    line-height: 1.75em;
+    max-width: 50%;
+    margin-bottom: 1.25em;
+}
+
+.pelicula-principal .boton {
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 0.31em;
+    padding: 0.93em 1.87em;
+    color: white;
+    margin-right: 1.25em;
+    cursor: pointer;
+    transition: .3s ease all;
+    font-size: 1.12em;
+}
+
+.pelicula-principal .boton:hover {
+    background: white;
+    color: black;
+}
+
+.pelicula-principal .boton i {
+    margin-right: 1.25em;
+}
+
+
+/*---- ------ ------ contenedor del titulo y controles del carusel------ ------ ----*/
+
+.contenedor-titulo-controles {
+    /*titulo a la izquierda y controles a la derecha*/
+    display: flex;
+    /*permite ponerlo a la izquierda y la derecha*/
+    justify-content: space-between;
+    align-items: end;
+}
+
+.contenedor-titulo-controles h3 {
+    color: white;
+    font-size: 30px;
+}
+
+.contenedor-titulo-controles .indicadores button {
+    background: white;
+    height: 3px;
+    width: 10px;
+    cursor: pointer;
+    border: none;
+    margin-right: 2px;
+}
+
+.contenedor-titulo-controles .indicadores button:hover,
+.contenedor-titulo-controles .indicadores button.activo {
+    background: red;
+}
+
+
+/*---- ------ ------ contendero principal y flechas------ ------ ----*/
+
+.pelicula-recomendada {
+    margin-bottom: 70px;
+}
+
+.pelicula-recomendada .conenedor-principal {
+    display: flex;
+    /*para tranformar los elementos en fila horizontal*/
+    align-items: center;
+    /*para centrar los elementos de forma vertical*/
+    position: relative;
+    /*para acomodar las flechas*/
+}
+
+.pelicula-recomendada .conenedor-principal .flecha-izquierda,
+.pelicula-recomendada .conenedor-principal .flecha-derecha {
+    /*las flechas queden dentro de las imagenes*/
+    position: absolute;
+    /*boton sin bordes*/
+    border: none;
+    background: rgba(0, 0, 0, .3);
+    font-size: 40px;
+    /*altura que siempre sera al 50% del tamaño total*/
+    height: 50%;
+    /*posicionarlo de arriba abajo, 50% del tamaño del contenedor - 25% del alto del boton*/
+    top: calc(50% - 25%);
+    line-height: 40px;
+    width: 50px;
+    color: white;
+    cursor: pointer;
+    transition: .2s ease all;
+}
+
+.pelicula-recomendada .conenedor-principal .flecha-izquierda {
+    left: 0;
+}
+
+.pelicula-recomendada .conenedor-principal .flecha-derecha {
+    right: 0;
+}
+
+.pelicula-recomendada .conenedor-principal .flecha-izquierda:hover,
+.pelicula-recomendada .conenedor-principal .flecha-derecha:hover {
+    background: rgba(0, 0, 0, .9);
+}
+
+
+/*---- ------ ------ Carousel ------ ------ ----*/
+
+.pelicula-recomendada .contenedor-carousel {
+    width: 100%;
+    padding: 20px 0;
+    /*lo que hacemos es decir que todo lo que salga del 100% del width este oculto*/
+    overflow: hidden;
+    /*nos establece cual queremos que sea el comportamiento del scroll, ejemplo al tocar un icono de la pantalla se vuelve a la parte principal de golpe, con esto evitamos eso y que tenga otro efecto mas suave al subir la pagina, con smooth*/
+    scroll-behavior: smooth;
+}
+
+.pelicula-recomendada .contenedor-carousel .carousel {
+    display: flex;
+    /*nos asegura que las imagenes quede una alado de la otra en fila*/
+    flex-wrap: nowrap;
+}
+
+.pelicula-recomendada .contenedor-carousel .carousel .pelicula {
+    /*para que no salgan todas las imagenes, entonces el minimo que tiene que tener siempre sera el marcado*/
+    min-width: 20%;
+    transition: .3s ease all;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .3);
+}
+
+
+/*cuando tenga la clase hover, ya que sera con js, esto funcionara con js*/
+
+.pelicula-recomendada .contenedor-carousel .carousel .pelicula.hover {
+    /*para hacer la imagen un poco mas grande*/
+    transform: scale(1.2);
+    /*crezca de manera proporcional de adentro a afuera*/
+    transform-origin: center;
+}
+
+.pelicula-recomendada .contenedor-carousel .carousel .pelicula img {
+    width: 100%;
+    /*quita un pequeño margen que tienen los navegadores*/
+    vertical-align: top;
+}
+
+
+/*---- ------ ------ Media Queries (par una pantalla mas chica) ------ ------ ----*/
+
+@media screen and (max-width: 800px) {
+    header .logotipo {
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+    header .contenedor {
+        flex-direction: column;
+        text-align: center;
+    }
+    .pelicula-principal {
+        font-size: 14px;
+    }
+    .pelicula-principal .descripcion {
+        max-width: 100%;
+    }
+    /*---------------- esta parte es del carousel ----------------*/
+    .pelicula-recomendada .contenedor-carousel {
+        /*esta vez si quedara bisible*/
+        overflow: visible;
+    }
+    .pelicula-recomendada .contenedor-carousel .carousel {
+        display: grid;
+        /*para que tenga una plantilla de columnas, de 3 por una fraccion, asi tienen el mismo tamaño*/
+        grid-template-columns: repeat(3, 1fr);
+        /*espaciado entre cada elemento de la grid*/
+        gap: 20px;
+    }
+    .pelicula-recomendada .indicadores,
+    .pelicula-recomendada .flecha-izquierda,
+    .pelicula-recomendada .flecha-derecha {
+        display: none;
+    }
+}
